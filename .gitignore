@@ -1,0 +1,8 @@
+build/
+.cph/
+*.exe
+*.out
+*.o
+in.txt
+out.txt
+_*.txt

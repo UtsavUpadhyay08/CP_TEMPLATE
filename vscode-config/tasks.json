@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // THE run button. Default build task -> Ctrl+Shift+B, or Ctrl+Alt+R.
+      // Builds whichever .cpp is focused (any folder in the workspace),
+      // runs it on input.txt, writes output.txt, and compares that with
+      // expected_output.txt -> PASS in green, FAIL in red with a diff.
+      "label": "run (input.txt -> output.txt)",
+      "type": "shell",
+      "command": "make",
+      "args": ["r", "f=${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+    },
+    {
+      "label": "run (stdin)",
+      "type": "shell",
+      "command": "make",
+      "args": ["pipe", "f=${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "problemMatcher": ["$gcc"],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+    },
+    {
+      "label": "build: submission flags",
+      "type": "shell",
+      "command": "make",
+      "args": ["fast", "f=${relativeFileDirname}/${fileBasenameNoExtension}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "presentation": { "reveal": "silent", "clear": true }
+    },
+    {
+      // Leave this running in a terminal; clicking the green (+) in
+      // Competitive Companion fills input.txt and expected_output.txt.
+      "label": "listen for samples",
+      "type": "shell",
+      "command": "python3",
+      "args": ["tools/listen.py"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "stress test",
+      "type": "shell",
+      "command": "./stress.sh",
+      "args": ["${relativeFile}", "stress/brute.cpp", "stress/gen.py", "1000"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "shared", "clear": true }
+    }
+  ]
+}

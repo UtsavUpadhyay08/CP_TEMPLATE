@@ -1,0 +1,48 @@
+{
+  // --- Competitive Programming Helper (CPH) ---
+  // Runs every sample test with one keypress (Ctrl+Alt+B).
+  // Note: no -DUSE_FILES here. CPH feeds each sample through stdin, so the
+  // template must NOT redirect input.txt when CPH is driving.
+  "cph.language.cpp.Command": "g++",
+  "cph.language.cpp.Args": "-std=c++23 -Ilib -O2 -Wall -Wextra -Wshadow -D_UTSAV_ -D_GLIBCXX_DEBUG -fsanitize=address,undefined -fno-sanitize-recover=all",
+  "cph.language.cpp.SubmissionCompiler": "GNU G++23 14.2 (64 bit, msys2)",
+  "cph.general.defaultLanguage": "cpp",
+  "cph.general.timeOut": 5000,
+  "cph.general.autoShowJudge": true,
+  "cph.general.retainWebviewContext": true,
+
+  // --- editor ---
+  "files.associations": {
+    "*.hpp": "cpp",
+    "*.cpp": "cpp"
+  },
+  // Points IntelliSense at WSL's g++. Without this the red squiggle on
+  // #include <bits/stdc++.h> never goes away, because that header is a GCC
+  // extension that doesn't exist for MSVC or clang.
+  "C_Cpp.default.compilerPath": "/usr/bin/g++",
+  "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+  "C_Cpp.default.cppStandard": "c++23",
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**", "${workspaceFolder}/lib"],
+  "C_Cpp.default.defines": ["_UTSAV_", "USE_FILES"],
+  "editor.formatOnSave": false,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+
+  // --- Code Runner (optional) ---
+  // Install the "Code Runner" extension if you want an actual clickable play
+  // button in the editor title bar. Same flags as `make r`: input.txt in,
+  // output.txt out, printed afterwards.
+  "code-runner.executorMap": {
+    "cpp": "cd $workspaceRoot && mkdir -p build && g++ -std=c++23 -Ilib -O2 -g -Wall -Wextra -Wshadow -D_UTSAV_ -DUSE_FILES -D_GLIBCXX_DEBUG -fsanitize=address,undefined -fno-sanitize-recover=all -o build/$fileNameWithoutExt $fileName && ./build/$fileNameWithoutExt && echo '--- output.txt ---' && cat output.txt"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.ignoreSelection": true,
+
+  // so typing `algo` pops the snippet list without Ctrl+Space
+  "editor.quickSuggestions": { "other": true, "comments": false, "strings": false },
+  "editor.snippetSuggestions": "top",
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on"
+}

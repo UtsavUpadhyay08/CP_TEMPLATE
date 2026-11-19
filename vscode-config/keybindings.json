@@ -1,0 +1,33 @@
+// Keyboard shortcuts for the run tasks.
+//
+// These CANNOT live in the project folder -- VS Code only reads keybindings
+// from your user profile. Open the Command Palette (Ctrl+Shift+P), run
+// "Preferences: Open Keyboard Shortcuts (JSON)", and paste these entries
+// inside the existing [ ] array.
+//
+//   Ctrl+Alt+R   compile + run on input.txt, print output.txt   <- the run button
+//   Ctrl+Alt+P   compile + run reading stdin instead
+//   Ctrl+Alt+S   stress test the open file against stress/brute.cpp
+//
+// Ctrl+Shift+B already runs the first one without any of this, because it is
+// the default build task.
+[
+  {
+    "key": "ctrl+alt+r",
+    "command": "workbench.action.tasks.runTask",
+    "args": "run (input.txt -> output.txt)",
+    "when": "editorLangId == cpp"
+  },
+  {
+    "key": "ctrl+alt+p",
+    "command": "workbench.action.tasks.runTask",
+    "args": "run (stdin)",
+    "when": "editorLangId == cpp"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "stress test",
+    "when": "editorLangId == cpp"
+  }
+]

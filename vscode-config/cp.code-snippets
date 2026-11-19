@@ -1,0 +1,54 @@
+{
+  "read vector": {
+    "scope": "cpp",
+    "prefix": "rv",
+    "body": ["int ${1:n};", "cin >> $1;", "vi ${2:a}($1);", "for (int& x : $2) cin >> x;"],
+    "description": "Read n then a vector of n ints"
+  },
+  "read grid": {
+    "scope": "cpp",
+    "prefix": "rg",
+    "body": [
+      "int ${1:n}, ${2:m};",
+      "cin >> $1 >> $2;",
+      "vector<string> ${3:g}($1);",
+      "for (auto& row : $3) cin >> row;"
+    ],
+    "description": "Read an n x m character grid"
+  },
+  "yes no": {
+    "scope": "cpp",
+    "prefix": "yn",
+    "body": ["cout << (${1:cond} ? \"YES\" : \"NO\") << '\\n';"],
+    "description": "Print YES/NO"
+  },
+  "print vector": {
+    "scope": "cpp",
+    "prefix": "pv",
+    "body": ["for (int i = 0; i < sz(${1:a}); ++i) cout << $1[i] << \" \\n\"[i + 1 == sz($1)];"],
+    "description": "Print a vector space separated with trailing newline"
+  },
+  "binary search on answer": {
+    "scope": "cpp",
+    "prefix": "bsa",
+    "body": [
+      "auto ok = [&](ll ${1:x}) -> bool {",
+      "    $0",
+      "    return true;",
+      "};",
+      "ll lo = ${2:0}, hi = ${3:1e18};",
+      "while (lo < hi) {",
+      "    ll mid = lo + (hi - lo) / 2;",
+      "    if (ok(mid)) hi = mid;",
+      "    else lo = mid + 1;",
+      "}"
+    ],
+    "description": "Binary search for the smallest feasible answer"
+  },
+  "directions": {
+    "scope": "cpp",
+    "prefix": "dir",
+    "body": ["constexpr int dx[4] = {1, -1, 0, 0};", "constexpr int dy[4] = {0, 0, 1, -1};"],
+    "description": "4-directional movement arrays"
+  }
+}
